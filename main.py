@@ -5,7 +5,7 @@ from tkinter import messagebox
 from docxtpl import DocxTemplate
 
 # CONFIGURAÇÕES
-MODELO_DOCX = "modelo/base.docx"
+MODELO_DOCX = "modelo/comodato.docx"
 PASTA_SAIDA = "contratos"
 
 os.makedirs(PASTA_SAIDA, exist_ok=True)
@@ -14,28 +14,34 @@ os.makedirs(PASTA_SAIDA, exist_ok=True)
 ctk.set_appearance_mode("Dark")
 ctk.set_default_color_theme("blue")
 
-
 class GeradorComodato(ctk.CTk):
-
     def __init__(self):
         super().__init__()
 
-        self.title("Gerador de Contratos de Comodato")
-        self.geometry("1000x750")
-        self.minsize(900, 650)
+        self.title("ComodaTech")
+        largura = 1000
+        altura = 750
 
+        # Verifica a resolução da tela
+        largura_tela = self.winfo_screenwidth()
+        altura_tela = self.winfo_screenheight()
+
+        # Ajusta a janela caso a tela seja menor
+        largura = min(largura, largura_tela - 80)
+        altura = min(altura, altura_tela - 100)
+        self.geometry(f"{largura}x{altura}")
+
+        # Tamanho mínimo permitido
+        self.minsize(800, 600)
         self.equipamentos = []
-
         self.criar_interface()
-
 
     # INTERFACE PRINCIPAL
     def criar_interface(self):
-
         # Título
         titulo = ctk.CTkLabel(
             self,
-            text="Gerador de Contratos de Comodato",
+            text="Gerador de Comodatos",
             font=ctk.CTkFont(size=24, weight="bold")
         )
         titulo.pack(pady=(20, 5))
@@ -612,16 +618,10 @@ class GeradorComodato(ctk.CTk):
 
                 equipamentos.append(dados)
 
-            # -----------------------------------------------
             # Carregar modelo
-            # -----------------------------------------------
-
             doc = DocxTemplate(MODELO_DOCX)
 
-            # -----------------------------------------------
             # Contexto
-            # -----------------------------------------------
-
             contexto = {
                 "nome": nome,
                 "cpf": cpf,
@@ -639,8 +639,8 @@ class GeradorComodato(ctk.CTk):
             nome_arquivo = self.limpar_nome_arquivo(nome)
 
             nome_arquivo = (
-                f"Comodato_{nome_arquivo}_"
-                f"{datetime.now().strftime('%Y%m%d_%H%M%S')}.docx"
+                f"Comodato_{nome_arquivo}.docx"
+
             )
 
             caminho_saida = os.path.join(
