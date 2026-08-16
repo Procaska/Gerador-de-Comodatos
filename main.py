@@ -575,11 +575,7 @@ class GeradorComodato(ctk.CTk):
             return
 
         try:
-
-            # -----------------------------------------------
             # Dados do colaborador
-            # -----------------------------------------------
-
             nome = self.obter_valor(self.entry_nome)
             cpf = self.obter_valor(self.entry_cpf)
             rg = self.obter_valor(self.entry_rg)
@@ -588,10 +584,8 @@ class GeradorComodato(ctk.CTk):
 
             data = self.obter_valor(self.entry_data)
 
-            # -----------------------------------------------
-            # Dados dos equipamentos
-            # -----------------------------------------------
 
+            # Dados dos equipamentos
             equipamentos = []
 
             for equipamento in self.equipamentos:
@@ -615,8 +609,8 @@ class GeradorComodato(ctk.CTk):
                         equipamento["obs"]
                     )
                 }
-
                 equipamentos.append(dados)
+
 
             # Carregar modelo
             doc = DocxTemplate(MODELO_DOCX)
@@ -638,15 +632,11 @@ class GeradorComodato(ctk.CTk):
             # Nome do arquivo
             nome_arquivo = self.limpar_nome_arquivo(nome)
 
-            nome_arquivo = (
-                f"Comodato_{nome_arquivo}.docx"
-
-            )
+            nome_arquivo = (f"Comodato_{nome_arquivo}.docx" )
 
             caminho_saida = os.path.join(
                 PASTA_SAIDA,
-                nome_arquivo
-            )
+                nome_arquivo )
 
             # Salvar
             doc.save(caminho_saida)
@@ -654,15 +644,13 @@ class GeradorComodato(ctk.CTk):
             messagebox.showinfo(
                 "Sucesso",
                 f"Contrato gerado com sucesso!\n\n"
-                f"Arquivo:\n{caminho_saida}"
-            )
+                f"Arquivo:\n{caminho_saida}" )
 
         except Exception as erro:
 
             messagebox.showerror(
                 "Erro ao gerar contrato",
-                f"Ocorreu um erro:\n\n{erro}"
-            )
+                f"Ocorreu um erro:\n\n{erro}" )
 
     # LIMPAR NOME DO ARQUIVO
     @staticmethod
