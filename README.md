@@ -6,7 +6,6 @@ Aplicação desenvolvida em Python para facilitar e agilizar a geração de cont
 
 - Python
 - CustomTkinter
-- python-docx
 - docxtpl
 - Jinja2
 - CX_Freeze
