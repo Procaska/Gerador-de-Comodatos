@@ -14,7 +14,6 @@ Aplicação desenvolvida em Python para facilitar e agilizar a geração de cont
 Gerador-de-Comodatos/
 ├── main.py
 ├── setup.py
-├── requirements.txt
 ├── modelo/
 │   └── comodato.docx
 └── contratos/
