@@ -3,7 +3,6 @@
 Aplicação desenvolvida em Python para facilitar e agilizar a geração de contratos de comodato.
 
 ## 👌Tecnologias
-
 - Python
 - CustomTkinter
 - docxtpl
